@@ -4,7 +4,7 @@ package wallet.swapgateway;
 
 service WalletService {
   rpc CreateAccount (CreateAccountRequest) returns (CreateAccountResponse) {}
-  rpc GetAccountBalance (GetAccountBalance) returns (GetAccountBalanceResponse) {}
+  rpc GetAccountBalance (GetAccountBalanceRequest) returns (GetAccountBalanceResponse) {}
   rpc GetTransactions (GetTransactionsRequest) returns (GetTransactionsResponse) {}
   rpc Deposit (DepositRequest) returns (DepositResponse) {}
   rpc Withdraw (WithdrawRequest) returns (WithdrawResponse) {}
@@ -31,7 +31,7 @@ message CreateAccountResponse {
   string address = 4;
 }
 
-message GetAccountBalance {
+message GetAccountBalanceRequest {
   string user_id = 1;
   int32 network = 2;
 }
@@ -255,7 +255,6 @@ message RemoveLiquidityRequest {
   string market = 3;
   string symbol = 4;
   float amount = 5;
-  float amount = 6;
 }
 
 message RemoveLiquidityResponse {
@@ -282,7 +281,7 @@ message CancelOrderResponse {
   string orderid = 4;
 }
 
-message GetOrderRequest {
+message GetOrdersRequest {
   string user_id = 1;
   int32 network = 2;
   string market = 3;
@@ -290,7 +289,7 @@ message GetOrderRequest {
   string orderid = 5;
 }
 
-message GetOrderResponse {
+message GetOrdersResponse {
   int32 status = 1;
   repeated string error = 2;
   string user_id = 3;
