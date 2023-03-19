@@ -1,0 +1,313 @@
+syntax = "proto3";
+
+package wallet.swapgateway;
+
+service WalletService {
+  rpc CreateAccount (CreateAccountRequest) returns (CreateAccountResponse) {}
+  rpc GetAccountBalance (GetAccountBalance) returns (GetAccountBalanceResponse) {}
+  rpc GetTransactions (GetTransactionsRequest) returns (GetTransactionsResponse) {}
+  rpc Deposit (DepositRequest) returns (DepositResponse) {}
+  rpc Withdraw (WithdrawRequest) returns (WithdrawResponse) {}
+  rpc CreateApiKey (CreateApiKeyRequest) returns (CreateApiKeyResponse) {}
+  rpc GetApiKeys (GetApiKeysRequest) returns (GetApiKeysResponse) {}
+  rpc UpdateApiKey (UpdateApiKeyRequest) returns (UpdateApiKeyResponse) {}
+  rpc DeleteApiKey (DeleteApiKeyRequest) returns (DeleteApiKeyResponse) {}
+  rpc BuyToken (BuyTokenRequest) returns (BuyTokenResponse) {}
+  rpc SellToken (SellTokenRequest) returns (SellTokenResponse) {}
+  rpc AddLiquidity (AddLiquidityRequest) returns (AddLiquidityResponse) {}
+  rpc RemoveLiquidity (RemoveLiquidityRequest) returns (RemoveLiquidityResponse) {}
+  rpc CancelOrder (CancelOrderRequest) returns (CancelOrderResponse) {}
+  rpc GetOrders (GetOrdersRequest) returns (GetOrdersResponse) {}
+}
+
+message CreateAccountRequest {
+  string user_id = 2;
+}
+
+message CreateAccountResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string user_id = 2;
+  string address = 3;
+}
+
+message GetAccountBalance {
+  string user_id = 2;
+  int32 network = 1;
+}
+
+message GetAccountBalanceResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string user_id = 2;
+  int32 network = 1;
+  repeated Balance balance = 3;
+}
+
+message Balance {
+  string name = 1;
+  string symbol = 2;
+  string address = 3;
+  float balance = 2;
+}
+
+message GetTransactionsRequest {
+  string user_id = 2;
+  int32 network = 1;
+  optional string txid = 2;
+}
+
+message GetTransactionsResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string user_id = 2;
+  int32 network = 1;
+  repeated Transaction transactions = 3;
+}
+
+message Transaction {
+  string txid = 1;
+  string address = 2;
+  float amount = 3;
+  float fee = 4;
+  int32 time = 9;
+  int32 timereceived = 10;
+  string comment = 11;
+  string commentTo = 12;
+  string hex = 13;
+}
+
+message DepositRequest {
+  string user_id = 2;
+  int32 network = 1;
+  string currency = 2;
+  float amount = 3;
+}
+
+message DepositResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string user_id = 2;
+  int32 network = 1;
+  string currency = 2;
+  float amount = 3;
+  string txid = 3;
+}
+
+message WithdrawRequest {
+  string user_id = 2;
+  int32 network = 1;
+  string address = 2;
+  string currency = 2;
+  float amount = 4;
+}
+
+message WithdrawResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string user_id = 2;
+  int32 network = 1;
+  string address = 2;
+  string currency = 2;
+  float amount = 4;
+  string txid = 3;
+}
+
+message CreateApiKeyRequest {
+  string user_id = 1;
+  string name = 2;
+  repeated string markets = 3;
+  repeated string permissions = 3;
+}
+
+message CreateApiKeyResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string user_id = 1;
+  string name = 2;
+  repeated string markets = 3;
+  repeated string permissions = 3;
+  string api_key = 3;
+  string secret_key = 4;
+}
+
+message GetApiKeysRequest {
+  string user_id = 1;
+  optional string name = 2;
+}
+
+message GetApiKeysResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string user_id = 1;
+  repeated ApiKey api_keys = 3;
+}
+
+message ApiKey {
+  string api_key = 1;
+  string name = 2;
+  repeated string markets = 3;
+  repeated string permissions = 3;
+}
+
+message UpdateApiKeyRequest {
+  string user_id = 2;
+  optional string api_key = 2;
+  optional string name = 3;
+  optional repeated string markets = 3;
+  optional repeated string permissions = 3;
+}
+
+message UpdateApiKeyResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string user_id = 2;
+  optional string api_key = 2;
+}
+
+message DeleteApiKeyRequest {
+  string user_id = 2;
+  string api_key = 2;
+}
+
+message DeleteApiKeyResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string user_id = 2;
+  string api_key = 2;
+}
+
+message BuyTokenRequest {
+  string user_id = 2;
+  int32 network = 1;
+  string market = 1;
+  string symbol = 2;
+  float price = 3;
+  float amount = 4;
+  float slippage = 5;
+  int32 deadline = 6;
+}
+
+message BuyTokenResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string user_id = 2;
+  int32 network = 1;
+  string market = 1;
+  string symbol = 2;
+  float price = 3;
+  float amount = 4;
+  float slippage = 5;
+  int32 deadline = 6;
+  string orderid = 3;
+  string txid = 3;
+}
+
+message SellTokenRequest {
+  string user_id = 2;
+  int32 network = 1;
+  string market = 1;
+  string symbol = 2;
+  float price = 3;
+  float amount = 4;
+  float slippage = 5;
+  int32 deadline = 6;
+}
+
+message SellTokenResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string user_id = 2;
+  int32 network = 1;
+  string market = 1;
+  string symbol = 2;
+  float price = 3;
+  float amount = 4;
+  float slippage = 5;
+  int32 deadline = 6;
+  string orderid = 3;
+  string txid = 3;
+}
+
+message AddLiquidityRequest {
+  string user_id = 2;
+  int32 network = 1;
+  string market = 1;
+  string symbol = 2;
+  float amount = 4;
+}
+
+message AddLiquidityResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string user_id = 2;
+  int32 network = 1;
+  string market = 1;
+  string symbol = 2;
+  float amount = 4;
+  string orderid = 3;
+  string txid = 3;
+}
+
+message RemoveLiquidityRequest {
+  string user_id = 2;
+  int32 network = 1;
+  string market = 1;
+  string symbol = 2;
+  float amount = 4;
+  float amount = 4;
+}
+
+message RemoveLiquidityResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string user_id = 2;
+  int32 network = 1;
+  string market = 1;
+  string symbol = 2;
+  float amount = 4;
+  string orderid = 3;
+  string txid = 3;
+}
+
+message CancelOrderRequest {
+  string user_id = 2;
+  string orderid = 3;
+}
+
+message CancelOrderResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string user_id = 2;
+  string orderid = 3;
+}
+
+message GetOrderRequest {
+  string user_id = 2;
+  int32 network = 1;
+  optional string market = 1;
+  optional string symbol = 2;
+  optional string orderid = 3;
+}
+
+message GetOrderResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string user_id = 2;
+  repeated Order orders = 3;
+}
+
+message Order {
+  string orderid = 1;
+  string market = 2;
+  string symbol = 3;
+  string side = 4;
+  float price = 5;
+  float amount = 6;
+  float filled = 7;
+  float remaining = 8;
+  int32 status = 9;
+  int32 created_at = 10;
+  int32 updated_at = 11;
+}
+
