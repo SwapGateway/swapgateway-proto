@@ -21,48 +21,48 @@ service WalletService {
 }
 
 message CreateAccountRequest {
-  string user_id = 2;
+  string user_id = 1;
 }
 
 message CreateAccountResponse {
   int32 status = 1;
   repeated string error = 2;
-  string user_id = 2;
-  string address = 3;
+  string user_id = 3;
+  string address = 4;
 }
 
 message GetAccountBalance {
-  string user_id = 2;
-  int32 network = 1;
+  string user_id = 1;
+  int32 network = 2;
 }
 
 message GetAccountBalanceResponse {
   int32 status = 1;
   repeated string error = 2;
-  string user_id = 2;
-  int32 network = 1;
-  repeated Balance balance = 3;
+  string user_id = 3;
+  int32 network = 4;
+  repeated Balance balance = 5;
 }
 
 message Balance {
   string name = 1;
   string symbol = 2;
   string address = 3;
-  float balance = 2;
+  float balance = 4;
 }
 
 message GetTransactionsRequest {
-  string user_id = 2;
-  int32 network = 1;
-  optional string txid = 2;
+  string user_id = 1;
+  int32 network = 2;
+  string txid = 3;
 }
 
 message GetTransactionsResponse {
   int32 status = 1;
   repeated string error = 2;
-  string user_id = 2;
-  int32 network = 1;
-  repeated Transaction transactions = 3;
+  string user_id = 3;
+  int32 network = 4;
+  repeated Transaction transactions = 5;
 }
 
 message Transaction {
@@ -70,231 +70,231 @@ message Transaction {
   string address = 2;
   float amount = 3;
   float fee = 4;
-  int32 time = 9;
-  int32 timereceived = 10;
-  string comment = 11;
-  string commentTo = 12;
-  string hex = 13;
+  int32 time = 5;
+  int32 timereceived = 6;
+  string comment = 7;
+  string commentTo = 8;
+  string hex = 9;
 }
 
 message DepositRequest {
-  string user_id = 2;
-  int32 network = 1;
-  string currency = 2;
-  float amount = 3;
+  string user_id = 1;
+  int32 network = 2;
+  string currency = 3;
+  float amount = 4;
 }
 
 message DepositResponse {
   int32 status = 1;
   repeated string error = 2;
-  string user_id = 2;
-  int32 network = 1;
-  string currency = 2;
-  float amount = 3;
-  string txid = 3;
+  string user_id = 3;
+  int32 network = 4;
+  string currency = 5;
+  float amount = 6;
+  string txid = 7;
 }
 
 message WithdrawRequest {
-  string user_id = 2;
-  int32 network = 1;
-  string address = 2;
-  string currency = 2;
-  float amount = 4;
+  string user_id = 1;
+  int32 network = 2;
+  string address = 3;
+  string currency = 4;
+  float amount = 5;
 }
 
 message WithdrawResponse {
   int32 status = 1;
   repeated string error = 2;
-  string user_id = 2;
-  int32 network = 1;
-  string address = 2;
-  string currency = 2;
-  float amount = 4;
-  string txid = 3;
+  string user_id = 3;
+  int32 network = 4;
+  string address = 5;
+  string currency = 6;
+  float amount = 7;
+  string txid = 8;
 }
 
 message CreateApiKeyRequest {
   string user_id = 1;
   string name = 2;
   repeated string markets = 3;
-  repeated string permissions = 3;
+  repeated string permissions = 4;
 }
 
 message CreateApiKeyResponse {
   int32 status = 1;
   repeated string error = 2;
-  string user_id = 1;
-  string name = 2;
-  repeated string markets = 3;
-  repeated string permissions = 3;
-  string api_key = 3;
-  string secret_key = 4;
+  string user_id = 3;
+  string name = 4;
+  repeated string markets = 5;
+  repeated string permissions = 6;
+  string api_key = 7;
+  string secret_key = 8;
 }
 
 message GetApiKeysRequest {
   string user_id = 1;
-  optional string name = 2;
+  string name = 2;
 }
 
 message GetApiKeysResponse {
   int32 status = 1;
   repeated string error = 2;
-  string user_id = 1;
-  repeated ApiKey api_keys = 3;
+  string user_id = 3;
+  repeated ApiKey api_keys = 4;
 }
 
 message ApiKey {
   string api_key = 1;
   string name = 2;
   repeated string markets = 3;
-  repeated string permissions = 3;
+  repeated string permissions = 4;
 }
 
 message UpdateApiKeyRequest {
-  string user_id = 2;
-  optional string api_key = 2;
-  optional string name = 3;
-  optional repeated string markets = 3;
-  optional repeated string permissions = 3;
+  string user_id = 1;
+  string api_key = 2;
+  string name = 3;
+  repeated string markets = 4;
+  repeated string permissions = 5;
 }
 
 message UpdateApiKeyResponse {
   int32 status = 1;
   repeated string error = 2;
-  string user_id = 2;
-  optional string api_key = 2;
+  string user_id = 3;
+  string api_key = 4;
 }
 
 message DeleteApiKeyRequest {
-  string user_id = 2;
+  string user_id = 1;
   string api_key = 2;
 }
 
 message DeleteApiKeyResponse {
   int32 status = 1;
   repeated string error = 2;
-  string user_id = 2;
-  string api_key = 2;
+  string user_id = 3;
+  string api_key = 4;
 }
 
 message BuyTokenRequest {
-  string user_id = 2;
-  int32 network = 1;
-  string market = 1;
-  string symbol = 2;
-  float price = 3;
-  float amount = 4;
-  float slippage = 5;
-  int32 deadline = 6;
+  string user_id = 1;
+  int32 network = 2;
+  string market = 3;
+  string symbol = 4;
+  float price = 5;
+  float amount = 6;
+  float slippage = 7;
+  int32 deadline = 8;
 }
 
 message BuyTokenResponse {
   int32 status = 1;
   repeated string error = 2;
-  string user_id = 2;
-  int32 network = 1;
-  string market = 1;
-  string symbol = 2;
-  float price = 3;
-  float amount = 4;
-  float slippage = 5;
-  int32 deadline = 6;
-  string orderid = 3;
-  string txid = 3;
+  string user_id = 3;
+  int32 network = 4;
+  string market = 5;
+  string symbol = 6;
+  float price = 7;
+  float amount = 8;
+  float slippage = 9;
+  int32 deadline = 10;
+  string orderid = 11;
+  string txid = 12;
 }
 
 message SellTokenRequest {
-  string user_id = 2;
-  int32 network = 1;
-  string market = 1;
-  string symbol = 2;
-  float price = 3;
-  float amount = 4;
-  float slippage = 5;
-  int32 deadline = 6;
+  string user_id = 1;
+  int32 network = 2;
+  string market = 3;
+  string symbol = 4;
+  float price = 5;
+  float amount = 6;
+  float slippage = 7;
+  int32 deadline = 8;
 }
 
 message SellTokenResponse {
   int32 status = 1;
   repeated string error = 2;
-  string user_id = 2;
-  int32 network = 1;
-  string market = 1;
-  string symbol = 2;
-  float price = 3;
-  float amount = 4;
-  float slippage = 5;
-  int32 deadline = 6;
-  string orderid = 3;
-  string txid = 3;
+  string user_id = 3;
+  int32 network = 4;
+  string market = 5;
+  string symbol = 6;
+  float price = 7;
+  float amount = 8;
+  float slippage = 9;
+  int32 deadline = 10;
+  string orderid = 11;
+  string txid = 12;
 }
 
 message AddLiquidityRequest {
-  string user_id = 2;
-  int32 network = 1;
-  string market = 1;
-  string symbol = 2;
-  float amount = 4;
+  string user_id = 1;
+  int32 network = 2;
+  string market = 3;
+  string symbol = 4;
+  float amount = 5;
 }
 
 message AddLiquidityResponse {
   int32 status = 1;
   repeated string error = 2;
-  string user_id = 2;
-  int32 network = 1;
-  string market = 1;
-  string symbol = 2;
-  float amount = 4;
-  string orderid = 3;
-  string txid = 3;
+  string user_id = 3;
+  int32 network = 4;
+  string market = 5;
+  string symbol = 6;
+  float amount = 7;
+  string orderid = 8;
+  string txid = 9;
 }
 
 message RemoveLiquidityRequest {
-  string user_id = 2;
-  int32 network = 1;
-  string market = 1;
-  string symbol = 2;
-  float amount = 4;
-  float amount = 4;
+  string user_id = 1;
+  int32 network = 2;
+  string market = 3;
+  string symbol = 4;
+  float amount = 5;
+  float amount = 6;
 }
 
 message RemoveLiquidityResponse {
   int32 status = 1;
   repeated string error = 2;
-  string user_id = 2;
-  int32 network = 1;
-  string market = 1;
-  string symbol = 2;
-  float amount = 4;
-  string orderid = 3;
-  string txid = 3;
+  string user_id = 3;
+  int32 network = 4;
+  string market = 5;
+  string symbol = 6;
+  float amount = 7;
+  string orderid = 8;
+  string txid = 9;
 }
 
 message CancelOrderRequest {
-  string user_id = 2;
-  string orderid = 3;
+  string user_id = 1;
+  string orderid = 2;
 }
 
 message CancelOrderResponse {
   int32 status = 1;
   repeated string error = 2;
-  string user_id = 2;
-  string orderid = 3;
+  string user_id = 3;
+  string orderid = 4;
 }
 
 message GetOrderRequest {
-  string user_id = 2;
-  int32 network = 1;
-  optional string market = 1;
-  optional string symbol = 2;
-  optional string orderid = 3;
+  string user_id = 1;
+  int32 network = 2;
+  string market = 3;
+  string symbol = 4;
+  string orderid = 5;
 }
 
 message GetOrderResponse {
   int32 status = 1;
   repeated string error = 2;
-  string user_id = 2;
-  repeated Order orders = 3;
+  string user_id = 3;
+  repeated Order orders = 4;
 }
 
 message Order {
