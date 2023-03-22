@@ -312,4 +312,3 @@ message Order {
   int32 created_at = 10;
   int32 updated_at = 11;
 }
-
