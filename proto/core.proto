@@ -63,6 +63,7 @@ message Options {
   int32 page = 2;
   string sort = 3;
   string orderBy = 4;
+}
 
 message GetTransactionsResponse {
   int32 status = 1;
