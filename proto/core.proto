@@ -50,6 +50,9 @@ message Balance {
   string symbol = 2;
   string address = 3;
   float balance = 4;
+  int32 chainId = 5;
+  int32 decimals = 6;
+  string logoURI = 7;
 }
 
 message GetTransactionsRequest {
@@ -96,7 +99,9 @@ message DepositRequest {
 message DepositResponse {
   int32 status = 1;
   repeated string error = 2;
-  string qr = 3;
+  string userid = 3;
+  int32 network = 4;
+  string qr = 5;
 }
 
 message WithdrawRequest {
@@ -110,8 +115,10 @@ message WithdrawRequest {
 message WithdrawResponse {
   int32 status = 1;
   repeated string error = 2;
-  int32 comission = 3;
-  string txid = 4;
+  string userid = 3;
+  int32 network = 4;
+  int32 comission = 5;
+  string txid = 6;
 }
 
 message CreateApiKeyRequest {
