@@ -1,8 +1,8 @@
-import "google/protobuf/struct.proto";
-
 syntax = "proto3";
 
 package core.swapgateway;
+
+import "google/protobuf/struct.proto";
 
 service CoreService {
   rpc CreateAccount (CreateAccountRequest) returns (CreateAccountResponse) {}
