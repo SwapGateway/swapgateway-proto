@@ -6,7 +6,8 @@ service CoreService {
   rpc CreateAccount (CreateAccountRequest) returns (CreateAccountResponse) {}
   rpc GetCurrentBalance (GetCurrentBalanceRequest) returns (GetBalanceResponse) {}
   rpc GetHistoryBalance (GetHistoryBalanceRequest) returns (GetBalanceResponse) {}
-  rpc GetTransactions (GetTransactionsRequest) returns (GetTransactionsResponse) {}
+  rpc GetOneTransaction (GetOneTransactionRequest) returns (GetTransactionsResponse) {}
+  rpc GetManyTransactions (GetManyTransactionsRequest) returns (GetTransactionsResponse) {}
   rpc Deposit (DepositRequest) returns (DepositResponse) {}
   rpc Withdraw (WithdrawRequest) returns (WithdrawResponse) {}
   rpc CreateApiKey (CreateApiKeyRequest) returns (CreateApiKeyResponse) {}
@@ -60,10 +61,15 @@ message Balance {
   string logoURI = 7;
 }
 
-message GetTransactionsRequest {
+message GetOneTransactionRequest {
   string userid = 1;
   int32 network = 2;
   string txid = 3;
+}
+
+message GetManyTransactionsRequest {
+  string userid = 1;
+  int32 network = 2;
   Options options = 4;
 }
 
@@ -72,6 +78,7 @@ message Options {
   int32 page = 2;
   string sort = 3;
   string orderBy = 4;
+  string where = 5;
 }
 
 message GetTransactionsResponse {
