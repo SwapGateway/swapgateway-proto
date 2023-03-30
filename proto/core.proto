@@ -99,8 +99,8 @@ message Transaction {
   string currency = 7;
   float amount = 8;
   string txhash = 9;
-  google.protobuf.Value txreceipt = 9;
-  string userid = 9;
+  google.protobuf.Value txreceipt = 10;
+  string userid = 11;
 }
 
 message DepositRequest {
