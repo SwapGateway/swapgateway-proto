@@ -164,7 +164,7 @@ message CreateApiKeyResponse {
   string userid = 3;
   string name = 4;
   repeated string markets = 5;
-  repeated string permissions = 6;
+  repeated bool viewonly = 6;
   string apikey = 7;
   string secretkey = 8;
 }
