@@ -166,7 +166,7 @@ message CreateApiKeyResponse {
   repeated string markets = 5;
   repeated string permissions = 6;
   string apikey = 7;
-  string secret_key = 8;
+  string secretkey = 8;
 }
 
 message GetOneApiKeyRequest {
