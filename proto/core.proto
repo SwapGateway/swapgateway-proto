@@ -4,7 +4,8 @@ package core.swapgateway;
 
 service CoreService {
   rpc CreateAccount (CreateAccountRequest) returns (CreateAccountResponse) {}
-  rpc GetAccountBalance (GetAccountBalanceRequest) returns (GetAccountBalanceResponse) {}
+  rpc GetCurrentBalance (GetCurrentBalanceRequest) returns (GetBalanceResponse) {}
+  rpc GetHistoryBalance (GetHistoryBalanceRequest) returns (GetBalanceResponse) {}
   rpc GetTransactions (GetTransactionsRequest) returns (GetTransactionsResponse) {}
   rpc Deposit (DepositRequest) returns (DepositResponse) {}
   rpc Withdraw (WithdrawRequest) returns (WithdrawResponse) {}
@@ -31,13 +32,18 @@ message CreateAccountResponse {
   string address = 4;
 }
 
-message GetAccountBalanceRequest {
+message GetCurrentBalanceRequest {
+  string userid = 1;
+  int32 network = 2;
+}
+
+message GetHistoryBalanceRequest {
   string userid = 1;
   int32 network = 2;
   string period = 3;
 }
 
-message GetAccountBalanceResponse {
+message GetBalanceResponse {
   int32 status = 1;
   repeated string error = 2;
   string userid = 3;
