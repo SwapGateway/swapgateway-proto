@@ -6,6 +6,7 @@ import "google/protobuf/struct.proto";
 
 service CoreService {
   rpc CreateAccount (CreateAccountRequest) returns (CreateAccountResponse) {}
+  rpc GetAccount (GetAccountRequest) returns (GetAccountResponse) {}
   rpc GetCurrentBalance (GetCurrentBalanceRequest) returns (GetBalanceResponse) {}
   rpc GetHistoryBalance (GetHistoryBalanceRequest) returns (GetBalanceResponse) {}
   rpc GetOneTransaction (GetOneTransactionRequest) returns (GetTransactionsResponse) {}
@@ -13,7 +14,8 @@ service CoreService {
   rpc Deposit (DepositRequest) returns (DepositResponse) {}
   rpc Withdraw (WithdrawRequest) returns (WithdrawResponse) {}
   rpc CreateApiKey (CreateApiKeyRequest) returns (CreateApiKeyResponse) {}
-  rpc GetApiKeys (GetApiKeysRequest) returns (GetApiKeysResponse) {}
+  rpc GetOneApiKey (GetOneApiKeyRequest) returns (GetApiKeysResponse) {}
+  rpc GetManyApiKeys (GetManyApiKeysRequest) returns (GetApiKeysResponse) {}
   rpc UpdateApiKey (UpdateApiKeyRequest) returns (UpdateApiKeyResponse) {}
   rpc DeleteApiKey (DeleteApiKeyRequest) returns (DeleteApiKeyResponse) {}
   rpc BuyToken (BuyTokenRequest) returns (BuyTokenResponse) {}
@@ -29,6 +31,17 @@ message CreateAccountRequest {
 }
 
 message CreateAccountResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string userid = 3;
+  string address = 4;
+}
+
+message GetAccountRequest {
+  string userid = 1;
+}
+
+message GetAccountResponse {
   int32 status = 1;
   repeated string error = 2;
   string userid = 3;
@@ -156,9 +169,14 @@ message CreateApiKeyResponse {
   string secret_key = 8;
 }
 
-message GetApiKeysRequest {
+message GetOneApiKeyRequest {
   string userid = 1;
   string name = 2;
+}
+
+message GetManyApiKeysRequest {
+  string userid = 1;
+  Options options = 4;
 }
 
 message GetApiKeysResponse {
