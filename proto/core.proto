@@ -191,7 +191,7 @@ message ApiKey {
   string apikey = 1;
   string name = 2;
   string market = 3;
-  string viewonly = 4;
+  bool viewonly = 4;
 }
 
 message UpdateApiKeyRequest {
