@@ -154,8 +154,8 @@ message WithdrawResponse {
 message CreateApiKeyRequest {
   string userid = 1;
   string name = 2;
-  repeated string markets = 3;
-  repeated string permissions = 4;
+  string market = 3;
+  bool viewonly = 4;
 }
 
 message CreateApiKeyResponse {
@@ -163,8 +163,8 @@ message CreateApiKeyResponse {
   repeated string error = 2;
   string userid = 3;
   string name = 4;
-  repeated string markets = 5;
-  repeated bool viewonly = 6;
+  string market = 5;
+  bool viewonly = 6;
   string apikey = 7;
   string secretkey = 8;
 }
@@ -189,16 +189,16 @@ message GetApiKeysResponse {
 message ApiKey {
   string apikey = 1;
   string name = 2;
-  repeated string markets = 3;
-  repeated string permissions = 4;
+  string market = 3;
+  string viewonly = 4;
 }
 
 message UpdateApiKeyRequest {
   string userid = 1;
   string apikey = 2;
   string name = 3;
-  repeated string markets = 4;
-  repeated bool viewonly = 5;
+  string market = 4;
+  bool viewonly = 5;
 }
 
 message UpdateApiKeyResponse {
