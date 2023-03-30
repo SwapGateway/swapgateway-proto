@@ -198,7 +198,7 @@ message UpdateApiKeyRequest {
   string apikey = 2;
   string name = 3;
   repeated string markets = 4;
-  repeated string viewonly = 5;
+  repeated bool viewonly = 5;
 }
 
 message UpdateApiKeyResponse {
