@@ -171,7 +171,7 @@ message CreateApiKeyResponse {
 
 message GetOneApiKeyRequest {
   string userid = 1;
-  string name = 2;
+  string apikey = 2;
 }
 
 message GetManyApiKeysRequest {
