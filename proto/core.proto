@@ -31,10 +31,8 @@ message CreateAccountRequest {
 }
 
 message CreateAccountResponse {
-  int32 status = 1;
-  repeated string error = 2;
-  string userid = 3;
-  string address = 4;
+  string userid = 1;
+  string address = 2;
 }
 
 message GetAccountRequest {
@@ -42,10 +40,8 @@ message GetAccountRequest {
 }
 
 message GetAccountResponse {
-  int32 status = 1;
-  repeated string error = 2;
-  string userid = 3;
-  string address = 4;
+  string userid = 1;
+  string address = 2;
 }
 
 message GetCurrentBalanceRequest {
@@ -60,11 +56,9 @@ message GetHistoryBalanceRequest {
 }
 
 message GetBalanceResponse {
-  int32 status = 1;
-  repeated string error = 2;
-  string userid = 3;
-  int32 network = 4;
-  repeated Balance balance = 5;
+  string userid = 1;
+  int32 network = 2;
+  repeated Balance balance = 3;
 }
 
 message Balance {
@@ -72,6 +66,7 @@ message Balance {
   string symbol = 2;
   string address = 3;
   float balance = 4;
+  float balance_usd = 5;
   int32 decimals = 6;
   string logoURI = 7;
 }
@@ -85,7 +80,7 @@ message GetOneTransactionRequest {
 message GetManyTransactionsRequest {
   string userid = 1;
   int32 network = 2;
-  Options options = 4;
+  Options options = 3;
 }
 
 message Options {
@@ -97,12 +92,10 @@ message Options {
 }
 
 message GetTransactionsResponse {
-  int32 status = 1;
-  repeated string error = 2;
-  string userid = 3;
-  int32 network = 4;
-  int32 count = 5;
-  repeated Transaction transactions = 6;
+  string userid = 1;
+  int32 network = 2;
+  int32 count = 3;
+  repeated Transaction transactions = 4;
 }
 
 message Transaction {
@@ -127,11 +120,9 @@ message DepositRequest {
 }
 
 message DepositResponse {
-  int32 status = 1;
-  repeated string error = 2;
-  string userid = 3;
-  int32 network = 4;
-  string qr = 5;
+  string userid = 1;
+  int32 network = 2;
+  string qr = 3;
 }
 
 message WithdrawRequest {
@@ -143,12 +134,10 @@ message WithdrawRequest {
 }
 
 message WithdrawResponse {
-  int32 status = 1;
-  repeated string error = 2;
-  string userid = 3;
-  int32 network = 4;
-  int32 comission = 5;
-  string txid = 6;
+  string userid = 1;
+  int32 network = 2;
+  int32 comission = 3;
+  string txid = 4;
 }
 
 message CreateApiKeyRequest {
@@ -159,14 +148,12 @@ message CreateApiKeyRequest {
 }
 
 message CreateApiKeyResponse {
-  int32 status = 1;
-  repeated string error = 2;
-  string userid = 3;
-  string name = 4;
-  string market = 5;
-  bool viewonly = 6;
-  string apikey = 7;
-  string secretkey = 8;
+  string userid = 1;
+  string name = 2;
+  string market = 3;
+  bool viewonly = 4;
+  string apikey = 5;
+  string secretkey = 6;
 }
 
 message GetOneApiKeyRequest {
@@ -176,15 +163,13 @@ message GetOneApiKeyRequest {
 
 message GetManyApiKeysRequest {
   string userid = 1;
-  Options options = 4;
+  Options options = 2;
 }
 
 message GetApiKeysResponse {
-  int32 status = 1;
-  repeated string error = 2;
-  string userid = 3;
-  int32 count = 4;
-  repeated ApiKey apikeys = 5;
+  string userid = 1;
+  int32 count = 2;
+  repeated ApiKey apikeys = 3;
 }
 
 message ApiKey {
@@ -203,10 +188,8 @@ message UpdateApiKeyRequest {
 }
 
 message UpdateApiKeyResponse {
-  int32 status = 1;
-  repeated string error = 2;
-  string userid = 3;
-  string apikey = 4;
+  string userid = 1;
+  string apikey = 2;
 }
 
 message DeleteApiKeyRequest {
@@ -215,10 +198,8 @@ message DeleteApiKeyRequest {
 }
 
 message DeleteApiKeyResponse {
-  int32 status = 1;
-  repeated string error = 2;
-  string userid = 3;
-  string apikey = 4;
+  string userid = 1;
+  string apikey = 2;
 }
 
 message BuyTokenRequest {
@@ -233,18 +214,16 @@ message BuyTokenRequest {
 }
 
 message BuyTokenResponse {
-  int32 status = 1;
-  repeated string error = 2;
-  string userid = 3;
-  int32 network = 4;
-  string market = 5;
-  string symbol = 6;
-  float price = 7;
-  float amount = 8;
-  float slippage = 9;
-  int32 deadline = 10;
-  string orderid = 11;
-  string txid = 12;
+  string userid = 1;
+  int32 network = 2;
+  string market = 3;
+  string symbol = 4;
+  float price = 5;
+  float amount = 6;
+  float slippage = 7;
+  int32 deadline = 8;
+  string orderid = 9;
+  string txid = 10;
 }
 
 message SellTokenRequest {
@@ -259,18 +238,16 @@ message SellTokenRequest {
 }
 
 message SellTokenResponse {
-  int32 status = 1;
-  repeated string error = 2;
-  string userid = 3;
-  int32 network = 4;
-  string market = 5;
-  string symbol = 6;
-  float price = 7;
-  float amount = 8;
-  float slippage = 9;
-  int32 deadline = 10;
-  string orderid = 11;
-  string txid = 12;
+  string userid = 1;
+  int32 network = 2;
+  string market = 3;
+  string symbol = 4;
+  float price = 5;
+  float amount = 6;
+  float slippage = 7;
+  int32 deadline = 8;
+  string orderid = 9;
+  string txid = 10;
 }
 
 message AddLiquidityRequest {
@@ -282,15 +259,13 @@ message AddLiquidityRequest {
 }
 
 message AddLiquidityResponse {
-  int32 status = 1;
-  repeated string error = 2;
-  string userid = 3;
-  int32 network = 4;
-  string market = 5;
-  string symbol = 6;
-  float amount = 7;
-  string orderid = 8;
-  string txid = 9;
+  string userid = 1;
+  int32 network = 2;
+  string market = 3;
+  string symbol = 4;
+  float amount = 5;
+  string orderid = 6;
+  string txid = 7;
 }
 
 message RemoveLiquidityRequest {
@@ -302,15 +277,13 @@ message RemoveLiquidityRequest {
 }
 
 message RemoveLiquidityResponse {
-  int32 status = 1;
-  repeated string error = 2;
-  string userid = 3;
-  int32 network = 4;
-  string market = 5;
-  string symbol = 6;
-  float amount = 7;
-  string orderid = 8;
-  string txid = 9;
+  string userid = 1;
+  int32 network = 2;
+  string market = 3;
+  string symbol = 4;
+  float amount = 5;
+  string orderid = 6;
+  string txid = 7;
 }
 
 message CancelOrderRequest {
@@ -319,10 +292,8 @@ message CancelOrderRequest {
 }
 
 message CancelOrderResponse {
-  int32 status = 1;
-  repeated string error = 2;
-  string userid = 3;
-  string orderid = 4;
+  string userid = 1;
+  string orderid = 2;
 }
 
 message GetOrdersRequest {
@@ -334,10 +305,8 @@ message GetOrdersRequest {
 }
 
 message GetOrdersResponse {
-  int32 status = 1;
-  repeated string error = 2;
-  string userid = 3;
-  repeated Order orders = 4;
+  string userid = 1;
+  repeated Order orders = 2;
 }
 
 message Order {
