@@ -66,7 +66,7 @@ message Balance {
   string symbol = 2;
   string address = 3;
   float balance = 4;
-  float balance_usd = 5;
+  float balanceusd = 5;
   int32 decimals = 6;
   string logoURI = 7;
 }
