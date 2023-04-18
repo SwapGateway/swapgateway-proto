@@ -33,6 +33,8 @@ message CreateAccountRequest {
 message CreateAccountResponse {
   string userid = 1;
   string address = 2;
+  int32 status = 3;
+  repeated string errors = 4;
 }
 
 message GetAccountRequest {
@@ -42,6 +44,8 @@ message GetAccountRequest {
 message GetAccountResponse {
   string userid = 1;
   string address = 2;
+  int32 status = 3;
+  repeated string errors = 4;
 }
 
 message GetCurrentBalanceRequest {
@@ -59,6 +63,8 @@ message GetBalanceResponse {
   string userid = 1;
   int32 network = 2;
   repeated Balance balance = 3;
+  int32 status = 4;
+  repeated string errors = 5;
 }
 
 message Balance {
@@ -96,6 +102,8 @@ message GetTransactionsResponse {
   int32 network = 2;
   int32 count = 3;
   repeated Transaction transactions = 4;
+  int32 status = 5;
+  repeated string errors = 6;
 }
 
 message Transaction {
@@ -123,6 +131,8 @@ message DepositResponse {
   string userid = 1;
   int32 network = 2;
   string qr = 3;
+  int32 status = 4;
+  repeated string errors = 5;
 }
 
 message WithdrawRequest {
@@ -138,6 +148,8 @@ message WithdrawResponse {
   int32 network = 2;
   int32 comission = 3;
   string txid = 4;
+  int32 status = 5;
+  repeated string errors = 6;
 }
 
 message CreateApiKeyRequest {
@@ -154,6 +166,8 @@ message CreateApiKeyResponse {
   bool viewonly = 4;
   string apikey = 5;
   string secretkey = 6;
+  int32 status = 7;
+  repeated string errors = 8;
 }
 
 message GetOneApiKeyRequest {
@@ -170,6 +184,8 @@ message GetApiKeysResponse {
   string userid = 1;
   int32 count = 2;
   repeated ApiKey apikeys = 3;
+  int32 status = 4;
+  repeated string errors = 5;
 }
 
 message ApiKey {
@@ -190,6 +206,8 @@ message UpdateApiKeyRequest {
 message UpdateApiKeyResponse {
   string userid = 1;
   string apikey = 2;
+  int32 status = 3;
+  repeated string errors = 4;
 }
 
 message DeleteApiKeyRequest {
@@ -200,6 +218,8 @@ message DeleteApiKeyRequest {
 message DeleteApiKeyResponse {
   string userid = 1;
   string apikey = 2;
+  int32 status = 3;
+  repeated string errors = 4;
 }
 
 message BuyTokenRequest {
@@ -224,6 +244,8 @@ message BuyTokenResponse {
   int32 deadline = 8;
   string orderid = 9;
   string txid = 10;
+  int32 status = 11;
+  repeated string errors = 12;
 }
 
 message SellTokenRequest {
@@ -248,6 +270,8 @@ message SellTokenResponse {
   int32 deadline = 8;
   string orderid = 9;
   string txid = 10;
+  int32 status = 11;
+  repeated string errors = 12;
 }
 
 message AddLiquidityRequest {
@@ -266,6 +290,8 @@ message AddLiquidityResponse {
   float amount = 5;
   string orderid = 6;
   string txid = 7;
+  int32 status = 8;
+  repeated string errors = 9;
 }
 
 message RemoveLiquidityRequest {
@@ -284,6 +310,8 @@ message RemoveLiquidityResponse {
   float amount = 5;
   string orderid = 6;
   string txid = 7;
+  int32 status = 8;
+  repeated string errors = 9;
 }
 
 message CancelOrderRequest {
@@ -294,6 +322,8 @@ message CancelOrderRequest {
 message CancelOrderResponse {
   string userid = 1;
   string orderid = 2;
+  int32 status = 3;
+  repeated string errors = 4;
 }
 
 message GetOrdersRequest {
@@ -307,6 +337,8 @@ message GetOrdersRequest {
 message GetOrdersResponse {
   string userid = 1;
   repeated Order orders = 2;
+  int32 status = 3;
+  repeated string errors = 4;
 }
 
 message Order {
